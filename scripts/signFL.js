@@ -1,6 +1,6 @@
 const axios = require('axios').default
 const cookies = process.env.FLCOOKIES
-const url = 'https://fastlink.ws/user'
+const url = 'https://fastlink.ws/user/checkin'
 
 async function signFL() {
   const res = await axios.post(
