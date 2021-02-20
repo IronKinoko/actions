@@ -8,7 +8,7 @@ async function signFL() {
     {},
     {
       headers: {
-        Cookies: cookies,
+        Cookie: cookies,
         'user-agent':
           'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36',
       },
