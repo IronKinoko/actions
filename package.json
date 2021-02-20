@@ -1,0 +1,14 @@
+{
+  "name": "actions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/IronKinoko/actions.git",
+  "author": "IronKinoko <kinoko_main@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "scripts": {
+    "start": "node scripts/signFL.js"
+  }
+}
