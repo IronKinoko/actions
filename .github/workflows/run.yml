@@ -34,9 +34,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
+      - name: yarn install
+        run: yarn
+      
       - name: run scripts
-        run: |
-          yarn 
-          yarn start
+        run: yarn start
         env: 
           FLCOOKIES: ${{ secrets.FLCOOKIES }}
