@@ -40,4 +40,5 @@ jobs:
       - name: run scripts
         run: yarn start
         env: 
+          GITHUB_ACTIONS: true
           FLCOOKIES: ${{ secrets.FLCOOKIES }}
