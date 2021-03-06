@@ -1,5 +1,4 @@
 import Axios from 'axios'
-import { parse } from 'cookie'
 import { sendBarkMsg } from '../notifactions/bark'
 const axios = Axios.create({
   headers: {
@@ -44,6 +43,5 @@ export async function signFL() {
   const cookie = await login(account)
 
   if (!cookie) return
-  console.log(parse(cookie))
   await sign(cookie)
 }
