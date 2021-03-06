@@ -1,19 +1,33 @@
-import axios from 'axios'
+import Axios from 'axios'
+import { parse } from 'cookie'
 import { sendBarkMsg } from '../notifactions/bark'
+const axios = Axios.create({
+  headers: {
+    'user-agent':
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36',
+  },
+})
 
-const url = 'https://fastlink.ws/user/checkin'
+const signUrl = 'https://fastlink.ws/user/checkin'
+const loginUrl = 'https://fastlink.ws/auth/login'
 
-export async function signFL() {
+async function login(account: string) {
   try {
-    const cookie = process.env.FLCOOKIES
+    const [email, passwd] = account.split('\n')
+    const res = await axios.post(loginUrl, { email, passwd })
+
+    return (res.headers['set-cookie'] as string[]).join(';')
+  } catch (error) {
+    sendBarkMsg('FL自动签到', `Login Error: ${error.message}`)
+  }
+}
+
+async function sign(cookie: string) {
+  try {
     const res = await axios({
-      url,
+      url: signUrl,
       method: 'POST',
-      headers: {
-        cookie,
-        'user-agent':
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36',
-      },
+      headers: { cookie },
     })
 
     const msg = res.data
@@ -22,4 +36,14 @@ export async function signFL() {
   } catch (error) {
     sendBarkMsg('FL自动签到', error.message)
   }
+}
+
+export async function signFL() {
+  const account = process.env.FL
+  if (!account) return
+  const cookie = await login(account)
+
+  if (!cookie) return
+  console.log(parse(cookie))
+  await sign(cookie)
 }

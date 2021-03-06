@@ -12,7 +12,8 @@ function sendBarkMsg(
   content?: string
 ): void {
   let url = process.env.BARK_URL
-
+  if (!url) return
+  
   let opts: BarkMessageParams = { title: '' }
 
   if (typeof params === 'string') {
