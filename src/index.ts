@@ -5,4 +5,14 @@ if (process.env.GITHUB_ACTIONS !== 'true') {
 
 // signFL
 import { signFL } from './scripts/signFL'
-signFL()
+
+// e20210225cooking
+import { main as e20210225cooking } from './scripts/e20200225cooking'
+
+async function run() {
+  await signFL()
+
+  await e20210225cooking()
+}
+
+run()

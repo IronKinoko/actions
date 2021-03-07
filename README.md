@@ -11,3 +11,4 @@
 | `GITHUB_ACTIONS` | `boolean` | 是否在`Github Actions`中运行 |
 | `FL`             | `string`  | fl登录账号密码               |
 | `BARK_URL`       | `string`  | bark推送url                  |
+| `YS_COOKIE`      | `string`  | 原神cookie 用于网页活动签到  |
