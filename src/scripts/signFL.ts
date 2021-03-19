@@ -39,7 +39,7 @@ async function sign(cookie: string) {
 
 export async function signFL() {
   const account = process.env.FL
-  if (!account) return
+  if (!account) return console.log('no FL account')
   const cookie = await login(account)
 
   if (!cookie) return

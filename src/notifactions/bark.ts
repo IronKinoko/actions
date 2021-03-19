@@ -12,8 +12,9 @@ function sendBarkMsg(
   content?: string
 ): void {
   let url = process.env.BARK_URL
-  if (!url) return
-  
+  if (!url) return console.log('no bark url')
+  url = url.replace(/\/$/, '')
+
   let opts: BarkMessageParams = { title: '' }
 
   if (typeof params === 'string') {
