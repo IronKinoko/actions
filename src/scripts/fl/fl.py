@@ -24,7 +24,7 @@ def sign(cookies):
 
 
 def fl():
-  print(email, passwd)
+  print('fastlink auto sign')
   cookies = login()
   msg = sign(cookies)
   sendBark('FL自动签到', msg.encode('utf-8').decode('unicode_escape'))
