@@ -20,6 +20,7 @@ def login():
 
 def sign(cookies):
   r = requests.post(signURL, headers=headers, cookies=cookies.get_dict())
+  print(r.text)
   return r.text
 
 

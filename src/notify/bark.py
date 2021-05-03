@@ -9,6 +9,7 @@ def sendBark(title: str, content: str = None):
     return
   legalList = list(map(lambda x: quote(x), filter(
       lambda x: x != None, [title, content])))
+  print(legalList)
   legalList.insert(0, barkURL)
   url = '/'.join(legalList)
   requests.get(url)
