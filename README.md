@@ -2,7 +2,7 @@
 
 自动化脚本
 
-用`typescript`与`node`配合`Github Actions`实现自动化
+用`python3`配合`Github Actions`实现自动化
 
 ## 环境变量
 
