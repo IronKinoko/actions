@@ -22,23 +22,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
 
-      - uses: actions/cache@v2
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: yarn install
-        run: yarn
+      - name: install requirements
+        run: pip install -r requirements.text
       
       - name: run scripts
-        run: yarn start
+        run: python3 main.py
         env: 
           GITHUB_ACTIONS: true
           FL: ${{ secrets.FL }}
